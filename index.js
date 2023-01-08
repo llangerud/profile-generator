@@ -92,6 +92,12 @@ const internQuestions = [
 
 const teamArray = [];
 
+function generateTemplate(data) {
+        fs.writeFile("./dist/iindex.html", generateIndex(data),(err) =>
+        err ? console.error(err) : console.log('generating your HTML file')
+        )
+    }  
+
 function getUserInput() {
     inquirer.prompt(questions).then(answers => {
         let {
@@ -111,8 +117,7 @@ function getUserInput() {
         }
         if (add === "finish building my team") {
             console.log('done');
-            generateIndex(teamArray);
-
+            generateTemplate(teamArray);
         }
 
     });
@@ -136,7 +141,8 @@ function createEngineer() {
             createIntern();
         }
         if (add === "finish building my team") {
-            generateIndex(teamArray);
+          generateTemplate(teamArray);
+            
         }
 
     });
@@ -160,7 +166,8 @@ function createIntern() {
             createIntern();
         }
         if (add === "finish building my team") {
-          generateIndex(teamArray);
+          generateTemplate(teamArray);
+         
         }
 
 
@@ -173,3 +180,7 @@ function init() {
 }
 
 init();
+
+module.exports = {
+  generateTemplate
+}
