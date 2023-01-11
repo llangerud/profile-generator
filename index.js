@@ -93,7 +93,7 @@ const internQuestions = [
 const teamArray = [];
 
 function generateTemplate(data) {
-        fs.writeFile("./dist/iindex.html", generateIndex(data),(err) =>
+        fs.writeFile("./dist/index.html", generateIndex(data),(err) =>
         err ? console.error(err) : console.log('generating your HTML file')
         )
     }  
@@ -134,6 +134,7 @@ function createEngineer() {
         } = answers;
         let egr = new Engineer(name, id, email, github, add);
         teamArray.push(egr);
+        
         if (add === "add engineer") {
             createEngineer();
         }
